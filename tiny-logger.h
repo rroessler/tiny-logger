@@ -98,10 +98,10 @@ namespace tiny {
 
        private:
         /// Base Logger Severity Strings.
-        static const std::array<std::string, 5> m_severityStrings;
+        static inline const std::array<std::string, 5> m_severityStrings = {"\x1b[1;31mFATAL\x1b[0m", "\x1b[31mERROR\x1b[0m", "\x1b[33mWARNING\x1b[0m", "\x1b[34mINFO\x1b[0m", "TRACE"};
 
         /// Core options.
-        static Options m_options;
+        static inline Options m_options = {};
 
         /********************
          *  HELPER METHODS  *
@@ -173,13 +173,6 @@ namespace tiny {
             m_processArguments(buffer, std::forward<Args>(args)...);
         }
     };
-
-    /***************************
-     *  STATIC INITIALISATION  *
-     ***************************/
-
-    const std::array<std::string, 5> Logger::m_severityStrings = {"\x1b[1;31mFATAL\x1b[0m", "\x1b[31mERROR\x1b[0m", "\x1b[33mWARNING\x1b[0m", "\x1b[34mINFO\x1b[0m", "TRACE"};
-    Logger::Options Logger::m_options;
 
     /*******************
      *  CORE LOGGABLE  *
